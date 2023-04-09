@@ -1,0 +1,56 @@
+import cv2
+import numpy.fft as fp
+import numpy as np
+from skimage.io import imread
+import matplotlib.pylab as pylab
+from scipy import signal
+
+im = imread('../img/mandrill.jpg')
+img_arr = cv2.split(im)
+color_arr = []
+
+# 가우시안 필터 처리 후 곱셈
+for i in range(0,3) :
+  img_convert = np.clip(img_arr[i],0,255)
+  gauss_kernel = np.outer(signal.gaussian(11, 3),
+                        signal.gaussian(11, 3))
+  
+  # 원본이미지 fft
+  freq = fp.fft2(img_convert) 
+  # 가우시안 커널 fft
+  freq_kernel = fp.fft2(fp.ifftshift(gauss_kernel)) 
+  # fp.ifftshift : 이미지를 중앙으로 보낸다.
+  
+  # Scipy 패키지 fftconvolve() 컨볼루션 적용
+  convolved = signal.fftconvolve(img_convert, gauss_kernel, mode='same') 
+   # .real 실수만 선택 복소수 제거를 위함
+  im1 = fp.ifft2(convolved).real 
+  
+  pylab.figure(figsize=(20,15))
+  pylab.subplot(1,6,1), 
+  pylab.imshow(img_arr[i]), pylab.title('Original Image',size=20), pylab.axis('off')
+  pylab.subplot(1,6,3), 
+  pylab.imshow(gauss_kernel), pylab.title('Gaussian Kernel', size=20)
+  pylab.subplot(1,6,5), 
+  pylab.imshow(convolved) , pylab.title('Output Image', size=20), pylab.axis('off')
+  pylab.subplot(1,6,2), 
+  pylab.imshow( (20*np.log10( 0.1 + fp.fftshift(freq))).astype(int)), pylab.title('Original Image Spectrum', size=12), pylab.axis('off')
+  pylab.subplot(1,6,4), 
+  pylab.imshow( (20*np.log10( 0.1 + fp.fftshift(freq_kernel))).astype(int)), pylab.title('Gaussian Kernel Spectrum', size=12)
+  pylab.subplot(1,6,6)
+  pylab.imshow( (20*np.log10( 0.1 + fp.fftshift(fp.fft2(convolved).real)).astype(int)) ), pylab.title('Output Image Spectrum', size=12), pylab.axis('off')
+  pylab.subplots_adjust(wspace=0.2, hspace=0)
+  pylab.show()
+  color_arr.append( ( convolved ).astype(int) )
+  
+  
+merge_img =cv2.merge([color_arr[0], color_arr[1], color_arr[2]])
+# 값 비교용 : blur = cv2.GaussianBlur(im,(11,11),3)
+
+merge_img = (merge_img / 45).astype(int)
+
+pylab.figure(figsize=(10,5))
+pylab.subplot(1,2,1), pylab.imshow(im)
+pylab.title('Original', size=20)
+pylab.subplot(1,2,2), pylab.imshow( np.clip(merge_img, 0, 255) )
+pylab.title('Blur', size=20)
