@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body, html { 
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .bgimg {
+            border: 0;
+            padding: 0; 
+            /*background-color: #ffeaea;*/
+            background-image: url('./image/Ground/background.jpg');
+            min-height: 100%;
+            background-position: center;
+            background-size: cover;
+            overflow-y: hidden; overflow-x: hidden;
+        }
+
+        .frontImg{
+            z-index: 9999;
+            position: fixed;
+            left: 1000px;
+            top: 400px;
+            padding: 15px 30px;
+            pointer-events: none;
+            clear: both;
+        }
+
+        .charImg{
+            z-index: 20;
+            width: auto;
+            position: fixed;
+            padding: 15px 30px;
+            float: right;
+            margin-top: 100px;
+            margin-left: 1012px;
+            pointer-events: none;
+            clear: both;
+            
+        }
+        .HatImg{
+            position: relative;
+            z-index: 60;
+        }
+        .AccImg{
+            position: relative;
+            z-index: 50;
+        }
+        .DressImg{
+            position: relative;
+            z-index: 40;
+        }
+        .PantsImg{
+            position: relative;
+            z-index: 30;
+        }
+        .ShoesImg{
+            position: relative;
+            z-index: 20;
+        }
+        .HiddenImg{
+            position: relative;
+            z-index: 25;
+        }
+        .Hair1Img{
+            position: relative;
+            z-index: 28;
+        }
+        .homeImg{
+            position: fixed;
+            left : 1483px;
+            top : 709px;
+            width: 25px;
+            z-index: 9999;
+        }
+        
+
+        @import "compass/css3";
+        @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+        }
+        .stroke-solid {
+            stroke-dashoffset: 0;
+            stroke-dashArray: 300;
+            stroke-width: 6px;
+            fill: rgba(255, 35, 72, 0.363);
+            transition: stroke-dashoffset 1s ease, opacity 1s ease;
+        }
+        .icon {
+            transform: scale(0.8);
+            transform-origin: 50% 50%;
+            transition: transform 200ms ease-out;
+        }
+        #play:hover .stroke-solid {
+            opacity: 1;
+            stroke-dashoffset: 300;
+        }
+        #play:hover .icon {
+            transform: scale(0.9);
+        }
+        #home:hover .stroke-solid {
+            opacity: 1;
+            stroke-dashoffset: 300;
+        }
+        #home:hover .icon {
+            transform: scale(0.9);
+        }
+        html {
+            height: 100%;
+        }
+        body {
+            height: 100%;
+            background-image: url("http://taylorswines.uat.playhousedigital.com/media/wysiwyg/TaylorsWines/Homepage/img_video.png");
+        }
+        #play {
+            cursor: pointer;
+            position: absolute;
+            top: 700px;
+            left: 1410px;
+        }
+        #home {
+            cursor: pointer;
+            position: absolute;
+            top: 700px;
+            left: 1470px;
+        }
+        </style>
+
+    <script type="text/javascript">
+        window.onload = function() { 
+            document.getElementById('header').onclick = function() {
+                this.style.color = 'red';
+            }
+        }; 
+    </script>
+
+
+</head>
+
+
+
+<body class="bgimg">
+
+    <!-- <div class="frontImg">
+        <img src="./image/Ground/front1.png" style="clear:both;" width="2800">
+    </div> -->
+
+    
+
+
+    <audio id="bflat" src="music/Sand_Castle.mp3">
+    </audio>
+
+    <!--오디오버튼-->
+    <button onclick="document.getElementById('bflat').play()" id="" class="btn btnEvent" style="border: 0px;">
+        <svg version="1.1" id="play" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="50px" width="50px"
+	    viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+        <path class="stroke-solid" fill="none" stroke="#ffffff"
+        d="M49.9,2.5C23.6,2.8,2.1,24.4,2.5,50.4C2.9,76.5,24.7,98,50.3,97.5c26.4-0.6,47.4-21.8,47.2-47.7
+        C97.3,23.7,75.7,2.3,49.9,2.5"/>
+        <path class="icon" fill="#ffffff" d="M38,69c-1,0.5-1.8,0-1.8-1.1V32.1c0-1.1,0.8-1.6,1.8-1.1l34,18c1,0.5,1,1.4,0,1.9L38,69z"/>
+        </svg>
+    </button>
+
+    <!--홈버튼-->
+
+    <button type="button" onClick="location.href='index.html'">
+        <img  src="image/button/home.png" class="homeImg" style="cursor:pointer" >
+        <svg version="1.1" id="home" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="50px" width="50px"
+	    viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+        <path class="stroke-solid" fill="none" stroke="#ffffff"
+        d="M49.9,2.5C23.6,2.8,2.1,24.4,2.5,50.4C2.9,76.5,24.7,98,50.3,97.5c26.4-0.6,47.4-21.8,47.2-47.7
+        C97.3,23.7,75.7,2.3,49.9,2.5"/>
+        </svg>
+    </button>
+
+
+
+    <!-- 캐릭터 소환 -->
+    <div class="charImg">
+        <img src="./image/character.png" width="400">
+    </div>
+
+
+    <script type='text/javascript'>
+
+    var img_L = 0;
+    var img_T = 0;
+    var targetObj;
+    
+    function getLeft(o){
+         return parseInt(o.style.left.replace('px', ''));
+    }
+    function getTop(o){
+         return parseInt(o.style.top.replace('px', ''));
+    }
+    
+    // 이미지 움직이기
+    function moveDrag(e){
+         var e_obj = window.event? window.event : e;
+         var dmvx = parseInt(e_obj.clientX + img_L);
+         var dmvy = parseInt(e_obj.clientY + img_T);
+         targetObj.style.left = dmvx +"px";
+         targetObj.style.top = dmvy +"px";
+         return false;
+    }
+    
+    // 드래그 시작
+    function startDrag(e, obj){
+         targetObj = obj;
+         var e_obj = window.event? window.event : e;
+         img_L = getLeft(obj) - e_obj.clientX;
+         img_T = getTop(obj) - e_obj.clientY;
+    
+         document.onmousemove = moveDrag;
+         document.onmouseup = stopDrag;
+         if(e_obj.preventDefault)e_obj.preventDefault();
+    }
+    
+    // 드래그 멈추기
+    function stopDrag(){
+         document.onmousemove = null;
+         document.onmouseup = null;
+    }
+    </script>
+    <iframe src="" allow="autoplay" style="display:none"></iframe>
+    
+
+    <!--모자-->
+    <div class="HatImg">
+        <img  src="./image/Hat/hat1.png"
+        width="75" style="position:absolute; left:512px; top:62px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+
+        <img  src="./image/Hat/hat2.png"
+        width="250" style="position:absolute; left:625px; top:7px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+
+        <img  src="./image/Hat/hat3.png"
+        width="175" style="position:absolute; left:412px; top:145px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+        
+        <img  src="./image/Hat/hat4.png"
+        width="125" style="position:absolute; left:65px; top:137px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+    </div>
+        
+    <!--액새서리-->
+    <div class="AccImg">
+        <img  src="./image/Accessory/acc1.png"
+        width="250" style="position:absolute; left:550px; top:572px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+
+        <img  src="./image/Accessory/acc2.png"
+        width="195" style="position:absolute; left:300px; top:42px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+
+        <img  src="./image/Accessory/acc3.png"
+        width="225" style="position:absolute; left:50px; top:42px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+        
+        <img  src="./image/Accessory/acc4.png"
+        width="200" style="position:absolute; left:207px; top:135px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+
+        <img  src="./image/Accessory/acc5.png"
+        width="250" style="position:absolute; left:550px; top:652px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+    </div>
+    
+
+    <!--상의-->
+    <div class="DressImg">
+        <img  src="./image/Dress/drs1.png"
+        width="235" style="position:absolute; left:25px; top:257px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+
+        <img  src="./image/Dress/drs2.png"
+        width="235" style="position:absolute; left:400px; top:257px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+
+        <img  src="./image/Dress/drs3.png"
+        width="235" style="position:absolute; left:325px; top:265px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+        
+        <img  src="./image/Dress/drs4.png"
+        width="235" style="position:absolute; left:250px; top:270px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+    </div>
+
+
+    <!--하의-->
+    <div class="PantsImg">
+        <img  src="./image/Pants/pants1.png"
+        width="162" style="position:absolute; left:455px; top:425px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+
+        <img  src="./image/Pants/pants2.png"
+        width="187" style="position:absolute; left:382px; top:410px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+
+        <img  src="./image/Pants/pants3.png"
+        width="187" style="position:absolute; left:337px; top:427px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+        
+        <img  src="./image/Pants/pants4.png"
+        width="187" style="position:absolute; left:262px; top:427px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+    </div>
+
+    
+
+    <!--신발-->
+    <div class="ShoesImg">
+        <img  src="./image/Shoes/shoes1.png"
+        width="111" style="position:absolute; left:330px; top:577px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+
+        <img  src="./image/Shoes/shoes2.png"
+        width="117" style="position:absolute; left:95px; top:570px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+
+        <img  src="./image/Shoes/shoes3.png"
+        width="112" style="position:absolute; left:325px; top:657px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+        
+        <img  src="./image/Shoes/shoes4.png"
+        width="125" style="position:absolute; left:87px; top:632px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+    </div>
+
+    <!--머리-->
+    <div class="">
+        <img  src="./image/Hair/hair2.png"
+        width="275" style="position:absolute; left:641px; top:192px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+    </div>
+
+    <div class="Hair1Img">
+        <img  src="./image/Hair/hair1.png"
+        width="300" style="position:absolute; left:625px; top:200px;
+        cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+    </div>
+
+    <!--히든 팬티>< -->
+    <div class="HiddenImg">
+        <img  src="./image/hidden.png"
+        width="140" style="position:absolute; left:1175px; top:466px;
+        cursor:default; cursor:hand" onmousedown="startDrag(event, this)">
+    </div>
+    
+
+
+    
+</body>
+    
+    <div style='position:absolute; left:0px; top:0px; cursor:pointer; cursor:hand' onmousedown='startDrag(event, this)'>
+    </div>
+
+    
+
+</html>

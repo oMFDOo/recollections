@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+
+<html >
+<head>
+    <style>
+        
+        .homeImg{
+            position: fixed;
+            left : 1483px;
+            top : 709px;
+            width: 25px;
+            z-index: 9999;
+        }
+    </style>
+
+    <meta charset="EUC-KR" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!--홈버튼-->
+    <button type="button" onClick="location.href='index.html'">
+        <img  src="image/button/home.png" class="homeImg" style="cursor:pointer" >
+        </svg>
+    </button>
+
+    <div class="card">
+    <div class="products">
+        <div class="product active" product-id="1" product-color="#ffd59e">
+        <div class="thumbnail"><img src="./image/reco/beach.png"/></div>
+        <h1 class="title">신나는 여름 방학!</h1>
+        <p class="description">여름맞이 피서 휴양객과 같은 옷을 입은 차차! 이번 여름 여행지는 어디였을까?</p>
+        </div>
+        <div class="product" product-id="2" product-color="#ff9eae">
+        <div class="thumbnail"><img src="./image/reco/cute.png"/></div>
+        <h1 class="title">스포티한 하루의 시작</h1>
+        <p class="description">톡톡튀는 차차의 매력을 옷으로 표현한다면 <br> 이런게 아닐까?상큼발랄한 코디를 원한다면 이렇게 입어본다면 발랄한 매력이 뿜뿜!</p>
+        </div>
+        <div class="product" product-id="3" product-color="#bebcff">
+        <div class="thumbnail"><img src="./image/reco/daily.png"/></div>
+        <h1 class="title">겉모습만이 전부가 아냐</h1>
+        <p class="description">박학다식 무엇이든 물어보라~<br>어떤 질문이든 척척 대답하는 차차의 지적인<br> 모습을 표현한 코디. 동그란 안경이 매력포인트!</p>
+        </div>
+        <div class="product" product-id="4" product-color="#64636f">
+        <div class="thumbnail"><img src="./image/reco/ggang.png"/></div>
+        <h1 class="title">깡에 죽고 깡에 산다</h1>
+        <p class="description">화려한 조명이 나를 감싸네~ 1일 1깡의 시대에 뒤쳐지지 않고 흐름을 타는 차차! </p>
+        </div>
+        <div class="product" product-id="5" product-color="#a5e8ad">
+        <div class="thumbnail"><img src="./image/reco/spring.png"/></div>
+        <h1 class="title">그린 퓨어 요정</h1>
+        <p class="description">짖궃은 장난 뒤의 웃음에는 악한 마음이란 없는 순수의 원석과도 같았다. 그런 모습을 잘<br> 보여주는 코디!</p>
+        </div>
+    </div>
+    <div class="footer"><a class="btn" id="prev" href="#" ripple="" ripple-color="#666666">Prev</a><a class="btn" id="next" href="#" ripple="" ripple-color="#666666">Next</a></div>
+    </div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+</body>
+</html>

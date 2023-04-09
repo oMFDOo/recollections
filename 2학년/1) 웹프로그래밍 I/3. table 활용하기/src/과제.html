@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC>
+<html>
+<head>
+<meta charset="utf-8">
+<title>초간단 테이블</title>
+</head>
+<style type="text/css">
+    @font-face {
+        font-family: "a뉴고딕M";
+        src: url("a뉴고딕M.ttf") format("truetype");
+    }
+</style>
+
+<style>
+    #bg {
+        top: 0; 
+        left: 0;    
+        position: fixed;
+
+        /* Preserve aspet ratio */
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
+    }
+    div
+    {
+        margin: 0px;
+        height: 400px;
+        border: 1px solid #cccccc;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        background-image : url("BGImage.gif");
+
+        z-index: -1;
+    }
+    table, th, td {
+     
+      border: 1px solid #e710df;
+      color: #e7e7e7;
+      background-color: rgba(202, 52, 197, 0.1);
+      z-index: 1;
+    }
+    table {
+      margin-top: 300;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    th {
+	    table-layout: fixed;
+        text-align: center; 
+        float: center;
+    }
+    td {
+        text-align: center; 
+        vertical-align: middle;
+    }
+    
+</style>
+<body>
+    <div id="bg">
+    </div>
+    <table border="1">
+    <th height = "40">시간  요일</th>
+	<th>월</th>
+    <th>화</th>
+    <th>수</th>
+    <th>목</th>
+    <th>금</th>
+    <tr height = "40" ><!-- 첫번째 줄 시작 -->
+        <td width = "150">09:00~09:50</td>
+        <td width = "180"></td>
+        <td width = "180" rowspan="2">웹프로그래밍</td>
+        <td width = "180" rowspan="2">데이터구조</td>
+        <td width = "180" rowspan="2">비주얼 프로그래밍</td>
+        <td width = "180"></td>
+	</tr><!-- 첫번째 줄 끝 -->
+    <tr height = "40" ><!-- 두번째 줄 시작 -->
+        <td > 10:00~10:50</td>
+        <td rowspan="2">비주얼 프로그래밍</td>
+        <td rowspan="2">선형대수</td>
+    </tr><!-- 두번째 줄 끝 -->
+    <tr height = "40" ><!-- 세번째 줄 시작 -->
+        <td >11:00~11:50</td>
+        <td></td>
+        <td rowspan="2">웹프로그래밍</td>
+        <td rowspan="2">창의공학설계</td>
+    </tr><!-- 세번째 줄 끝 -->
+    <tr height = "40" ><!-- 네번째 줄 시작 -->
+        <td >12:00~12:50</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr><!-- 네번째 줄 끝 -->
+    <tr height = "40" ><!-- 다섯번째 줄 시작 -->
+        <td >13:00~13:50</td>
+        <td></td>
+        <td>데이터구조</td>
+        <td></td>
+        <td></td>
+        <td rowspan="2">창의공학설계</td>
+    </tr><!-- 다섯번째 줄 끝 -->
+    <tr height = "40" ><!-- 여섯번째 줄 시작 -->
+        <td >14:00~14:50</td>
+        <td>논리설계</td>
+        <td>선형대수</td>
+        <td></td>
+        <td rowspan="2">논리설계</td>
+    </tr><!-- 여섯번째 줄 끝 -->
+    <tr height = "40" ><!-- 일곱번째 줄 시작 -->
+        <td >15:00~15:50</td>
+        <td></td>
+        <td></td>
+        <td rowspan="2">콜라보체험활동</td>
+        <td></td>
+    </tr><!-- 일곱번째 줄 끝 -->
+    <tr height = "40" ><!-- 일곱번째 줄 시작 -->
+        <td>16:00~16:50</td>
+        <td></td>
+        <td>전공탐색과 진로설계</td>
+        <td></td>
+        <td></td>
+	</tr><!-- 일곱번째 줄 끝 -->
+    </table>
+</body>
+</html>
